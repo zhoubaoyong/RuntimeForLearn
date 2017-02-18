@@ -153,7 +153,8 @@ void play(id self,SEL sel)
         NSLog(@"%@",strName);
     }
 <p>属性列表</p>
-    u_int               pCount;
+<span>
+u_int               pCount;
     objc_property_t*    properties= class_copyPropertyList([Person class], &pCount);
     for (int i = 0; i < pCount ; i++)
     {
@@ -161,3 +162,5 @@ void play(id self,SEL sel)
         NSString *strName = [NSString  stringWithCString:propertyName encoding:NSUTF8StringEncoding];
         NSLog(@"%@",strName);
     }
+</span>
+    
