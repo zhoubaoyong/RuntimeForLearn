@@ -35,6 +35,11 @@
     // 本质：让类对象发送消息
 //    objc_msgSend([Person class], @selector(eat));
 ```
+#### 类方法调用过程
+当类调用方法->底层是通过objc_msgSend(target,SEL sel)给类发送消息(target为该类，sel为方法的编号)->在该类方法映射表中Method list中查找该方法实现的IMP指针->IMP指针指向方法的实现代码并调用代码<br>
+以上属Person为例：[p eat] -> objc_msgSend(p, @selector(eat))给类发消息 -> 在Person类中的Method list查找eat方法的IMP指针 -> eat方法的IMP指针指向方法的实现并调用代码<br>
+这只是简单的描述，Runtime的底层详情和方法调用步骤见超链：http://www.cocoachina.com/ios/20141008/9844.html
+http://www.cnblogs.com/qmmq/p/5215910.html
 ### 交换方法的实现：
 一般用于给系统方法添加更多操作，比如添加打印log等；<br>
 例子：用自定义的方法imageWithNamed:替换UIImage的系统方法imageName:
