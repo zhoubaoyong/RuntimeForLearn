@@ -68,7 +68,7 @@
     method_setImplementation(imageName, imageWithName_IMP);
     method_setImplementation(imageWithName, imageName_IMP);
     }
-     
+```    
 /**
  *  自定义替换方法：既能加载图片又能打印
  */
