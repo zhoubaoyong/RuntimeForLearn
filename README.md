@@ -79,7 +79,7 @@
     return image;
 }
 <h2>3.添加属性：</h2>
-## 添加属性
+<p>添加属性</p>
 @interface Person : NSObject
 /**
  *  添加属性：
