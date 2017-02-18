@@ -60,7 +60,7 @@
     Method imageWithName = class_getClassMethod(self, @selector(imageWithName:));
     
     /* IMP 它是一个指向方法实现的指针，每一个方法都一个对应的IMP指针。我们可以直接调用方法的IMP指针，来避免方法调用死循环的问题
-       实际上直接调用一个方法的IMP指针的效率是高于调用方法本身的，如果有一个合适的时机获取到方法的IMP的话，可以试着调用IMP而不用调用方法。*/
+    实际上直接调用一个方法的IMP指针的效率是高于调用方法本身的，如果有一个合适的时机获取到方法的IMP的话，可以试着调用IMP而不用调用方法。*/
     //获取方法实现的指针
     IMP imageName_IMP = method_getImplementation(imageName);
     IMP imageWithName_IMP = method_getImplementation(imageWithName);
@@ -84,7 +84,6 @@
 }
 <h2>3.添加属性：</h2>
 <p>添加属性</p>
-
 @interface Person : NSObject
 /**
  *  添加属性：
@@ -95,7 +94,7 @@
 @end
 @implementation Person
 - (void)setName:(NSString *)name{   
-_name = name;
+    _name = name;
 }
 - (NSString *)name{
     return _name;
@@ -154,7 +153,7 @@ void play(id self,SEL sel)
 <h2>5.获取类的信息：</h2>
 <p>方法列表</p>
 
-     u_int               mCount;
+     u_int               mCount;<br>
     Method*    methods= class_copyMethodList([Person class], &mCount);
     for (int i = 0; i < mCount ; i++)
     {
@@ -164,7 +163,7 @@ void play(id self,SEL sel)
     }
 <p>属性列表</p>
 
-    u_int               pCount;
+    u_int               pCount;<br>
     objc_property_t*    properties= class_copyPropertyList([Person class], &pCount);
     for (int i = 0; i < pCount ; i++)
     {
