@@ -34,7 +34,7 @@
 <h2>2.交换方法的实现：</h2>
 一般用于给系统方法添加更多操作，比如添加打印log等；<br>
 例子：用自定义的方法imageWithNamed:替换UIImage的系统方法imageName:
-<p>第一种方案</p>
+## 第一种方案
 /**
  *  load方法是在程序代码加载进内存是调用一次
  */
@@ -50,7 +50,7 @@
     // 交换方法地址，相当于交换实现方式
     method_exchangeImplementations(imageWithName, imageName);
     }
-<p>第二种方案</p>
+## 第二种方案
 + (void)load{
     //获取系统方法
     Method imageName = class_getClassMethod(self, @selector(imageNamed:));
@@ -79,7 +79,7 @@
     return image;
 }
 <h2>3.添加属性：</h2>
-<p>添加属性</p>
+## 添加属性
 @interface Person : NSObject
 /**
  *  添加属性：
@@ -117,7 +117,7 @@ static const char *key = "name";
 - (void)play{
     // play node
 }
-<p>动态添加方法的实质</p>
+## 动态添加方法的实质
 // void(*)()
 // 默认方法都有两个隐式参数，
 void play(id self,SEL sel)
