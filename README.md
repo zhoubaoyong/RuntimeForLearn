@@ -53,7 +53,7 @@
     }
 <p>
 <h3>第二种方案</h3>
-```java
+```OC
 + (void)load{
     //获取系统方法
     Method imageName = class_getClassMethod(self, @selector(imageNamed:));
