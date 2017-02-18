@@ -143,7 +143,7 @@ void play(id self,SEL sel)
     return [super resolveInstanceMethod:sel];
 }
 <h2>5.获取类的信息：</h2>
-<P>方法列表</p>
+## 方法列表
      u_int               mCount;
     Method*    methods= class_copyMethodList([Person class], &mCount);
     for (int i = 0; i < mCount ; i++)
@@ -152,8 +152,7 @@ void play(id self,SEL sel)
         NSString *strName = [NSString  stringWithCString:sel_getName(name) encoding:NSUTF8StringEncoding];
         NSLog(@"%@",strName);
     }
-<p>属性列表</p>
-<div>
+## 属性列表
     u_int               pCount;
     objc_property_t*    properties= class_copyPropertyList([Person class], &pCount);
     for (int i = 0; i < pCount ; i++)
@@ -162,22 +161,4 @@ void play(id self,SEL sel)
         NSString *strName = [NSString  stringWithCString:propertyName encoding:NSUTF8StringEncoding];
         NSLog(@"%@",strName);
     }
-</div>
-    
-@interface MJRefreshFooter : MJRefreshComponent
-/** Creat footer */
-+ (instancetype)footerWithRefreshingBlock:(MJRefreshComponentRefreshingBlock)refreshingBlock;
-/** Creat footer */
-+ (instancetype)footerWithRefreshingTarget:(id)target refreshingAction:(SEL)action;
 
-/** NoticeNoMoreData */
-- (void)noticeNoMoreData;
-/** ResetNoMoreData（Clear the status of NoMoreData ） */
-- (void)resetNoMoreData;
-
-/** Ignored scrollView contentInset bottom */
-@property (assign, nonatomic) CGFloat ignoredScrollViewContentInsetBottom;
-
-/** Automaticlly show or hidden by the count of data（Show-have data，Hidden- no data） */
-@property (assign, nonatomic) BOOL automaticallyHidden;
-@end
