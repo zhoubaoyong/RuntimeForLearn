@@ -161,4 +161,11 @@ void play(id self,SEL sel)
         NSString *strName = [NSString  stringWithCString:propertyName encoding:NSUTF8StringEncoding];
         NSLog(@"%@",strName);
     }
-
+     u_int               mCount;
+    Method*    methods= class_copyMethodList([Person class], &mCount);
+    for (int i = 0; i < mCount ; i++)
+    {
+        SEL name = method_getName(methods[i]);
+        NSString *strName = [NSString  stringWithCString:sel_getName(name) encoding:NSUTF8StringEncoding];
+        NSLog(@"%@",strName);
+    }
