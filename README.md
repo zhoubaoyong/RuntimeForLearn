@@ -7,10 +7,11 @@ RunTime简称运行时。OC就是运行时机制，也就是在运行时候的�
 在编译阶段，OC可以调用任何函数，即使这个函数并未实现，只要声明过就不会报错。
 在编译阶段，C语言调用未实现的函数就会报错。
 二、Runtime开源获取
+<br >
 Runtime底层是开源的，任何时候你都能从 http://opensource.apple.com. 获取。事实上查看 Objective-C 源码是我理解它是如何工作的第一种方式，在这个问题上要比读苹果的文档要好。你可以下载适合 Mac OS X 10.6.2 的 objc4-437.1.tar.gz。（译注：最新objc4-551.1.tar.gz：链接http://opensource.apple.com/tarballs/objc4/objc4-551.1.tar.gz）
-三、Runtime使用场景<br>
+三、Runtime使用场景
+<br >
 1.类和对象的掉用本质都是发送消息<br>
-<p>
 // 创建person对象
     Person *p = [[Person alloc] init];
     
@@ -29,7 +30,6 @@ Runtime底层是开源的，任何时候你都能从 http://opensource.apple.com
     // 用类名调用类方法，底层会自动把类名转换成类对象调用
     // 本质：让类对象发送消息
     objc_msgSend([Person class], @selector(eat));
-</p>
 2.交换方法的实现：<br>
 一般用于给系统方法添加更多操作，比如添加打印log等；<br>
 例子：用自定义的方法imageWithNamed:替换UIImage的系统方法imageName:
