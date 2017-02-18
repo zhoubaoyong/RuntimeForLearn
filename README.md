@@ -150,8 +150,8 @@ void play(id self,SEL sel)
     
     return [super resolveInstanceMethod:sel];
 }
-<h2>5.获取类的信息：</h2>
-<p>方法列表</p>
+### 5.获取类的信息:
+####    方法列表
 ```objc
     u_int               mCount;
     Method*    methods= class_copyMethodList([Person class], &mCount);
@@ -162,7 +162,7 @@ void play(id self,SEL sel)
         NSLog(@"%@",strName);
     }
 ```
-<p>属性列表</p>
+####    属性列表
 ```objc
     u_int               pCount;
     objc_property_t*    properties= class_copyPropertyList([Person class], &pCount);
