@@ -164,3 +164,20 @@ void play(id self,SEL sel)
     }
 </div>
     
+@interface MJRefreshFooter : MJRefreshComponent
+/** Creat footer */
++ (instancetype)footerWithRefreshingBlock:(MJRefreshComponentRefreshingBlock)refreshingBlock;
+/** Creat footer */
++ (instancetype)footerWithRefreshingTarget:(id)target refreshingAction:(SEL)action;
+
+/** NoticeNoMoreData */
+- (void)noticeNoMoreData;
+/** ResetNoMoreData（Clear the status of NoMoreData ） */
+- (void)resetNoMoreData;
+
+/** Ignored scrollView contentInset bottom */
+@property (assign, nonatomic) CGFloat ignoredScrollViewContentInsetBottom;
+
+/** Automaticlly show or hidden by the count of data（Show-have data，Hidden- no data） */
+@property (assign, nonatomic) BOOL automaticallyHidden;
+@end
