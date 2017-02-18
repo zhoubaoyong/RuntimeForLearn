@@ -34,7 +34,7 @@
 <h2>2.交换方法的实现：</h2>
 一般用于给系统方法添加更多操作，比如添加打印log等；<br>
 例子：用自定义的方法imageWithNamed:替换UIImage的系统方法imageName:
-## 第一种方案
+<h3>第一种方案</h3>
 /**
  *  load方法是在程序代码加载进内存是调用一次
  */
@@ -50,7 +50,7 @@
     // 交换方法地址，相当于交换实现方式
     method_exchangeImplementations(imageWithName, imageName);
     }
-## 第二种方案
+<h3>第二种方案</h3>
 + (void)load{
     //获取系统方法
     Method imageName = class_getClassMethod(self, @selector(imageNamed:));
@@ -117,7 +117,7 @@ static const char *key = "name";
 - (void)play{
     // play node
 }
-## 动态添加方法的实质
+<p>动态添加方法的实质</p>
 // void(*)()
 // 默认方法都有两个隐式参数，
 void play(id self,SEL sel)
@@ -143,7 +143,7 @@ void play(id self,SEL sel)
     return [super resolveInstanceMethod:sel];
 }
 <h2>5.获取类的信息：</h2>
-## 方法列表
+<p>方法列表</p>
      u_int               mCount;
     Method*    methods= class_copyMethodList([Person class], &mCount);
     for (int i = 0; i < mCount ; i++)
@@ -152,7 +152,7 @@ void play(id self,SEL sel)
         NSString *strName = [NSString  stringWithCString:sel_getName(name) encoding:NSUTF8StringEncoding];
         NSLog(@"%@",strName);
     }
-## 属性列表
+<p>属性列表</p>
     u_int               pCount;
     objc_property_t*    properties= class_copyPropertyList([Person class], &pCount);
     for (int i = 0; i < pCount ; i++)
