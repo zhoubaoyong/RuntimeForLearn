@@ -67,8 +67,7 @@
     //重新设置方法实现
     method_setImplementation(imageName, imageWithName_IMP);
     method_setImplementation(imageWithName, imageName_IMP);
-    }
-```    
+    }    
 /**
  *  自定义替换方法：既能加载图片又能打印
  */
@@ -82,6 +81,7 @@
     NSLog(@"加载图片");
     return image;
 }
+```
 <h2>3.添加属性：</h2>
 <p>添加属性</p>
 @interface Person : NSObject
