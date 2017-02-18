@@ -13,7 +13,7 @@
 <br>
 <h1>三、Runtime使用场景</h1>
 <br>
-<h2>1.类和对象的掉用本质都是发送消息<h2>
+<h2>1.类和对象的掉用本质都是发送消息</h2>
     // 创建person对象
     Person *p = [[Person alloc] init];
     // 调用对象方法
@@ -40,6 +40,7 @@
  */
 + (void)load{
     // 交换方法
+    // 第一种方案
     // 获取imageWithName方法地址
     Method imageWithName = class_getClassMethod(self, @selector(imageWithName:));
     
@@ -143,7 +144,7 @@ void play(id self,SEL sel)
 }
 <h2>5.获取类的信息：</h2>
 <P>方法列表</p>
-    u_int               mCount;
+     u_int               mCount;
     Method*    methods= class_copyMethodList([Person class], &mCount);
     for (int i = 0; i < mCount ; i++)
     {
@@ -153,7 +154,7 @@ void play(id self,SEL sel)
     }
 <p>属性列表</p>
 <div>
-u_int               pCount;
+    u_int               pCount;
     objc_property_t*    properties= class_copyPropertyList([Person class], &pCount);
     for (int i = 0; i < pCount ; i++)
     {
