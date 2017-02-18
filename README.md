@@ -35,6 +35,7 @@
 一般用于给系统方法添加更多操作，比如添加打印log等；<br>
 例子：用自定义的方法imageWithNamed:替换UIImage的系统方法imageName:
 <h3>第一种方案</h3>
+<p>
 /**
  *  load方法是在程序代码加载进内存是调用一次
  */
@@ -50,7 +51,9 @@
     // 交换方法地址，相当于交换实现方式
     method_exchangeImplementations(imageWithName, imageName);
     }
+<p>
 <h3>第二种方案</h3>
+
 + (void)load{
     //获取系统方法
     Method imageName = class_getClassMethod(self, @selector(imageNamed:));
@@ -65,6 +68,7 @@
     method_setImplementation(imageName, imageWithName_IMP);
     method_setImplementation(imageWithName, imageName_IMP);
     }
+     
 /**
  *  自定义替换方法：既能加载图片又能打印
  */
@@ -80,6 +84,7 @@
 }
 <h2>3.添加属性：</h2>
 <p>添加属性</p>
+
 @interface Person : NSObject
 /**
  *  添加属性：
@@ -97,6 +102,7 @@ _name = name;
 }
 @end
 <p>添加属性的实质</p>
+
 // 定义关联的key
 static const char *key = "name";
 - (void)setName:(NSString *)name{
@@ -114,10 +120,12 @@ static const char *key = "name";
 }
 <h2>4.动态添加方法的实质：见Person类中添加play的实质</h2>
 <p>一般添加方法</p>
+
 - (void)play{
     // play node
 }
 <p>动态添加方法的实质</p>
+
 // void(*)()
 // 默认方法都有两个隐式参数，
 void play(id self,SEL sel)
@@ -126,6 +134,7 @@ void play(id self,SEL sel)
 }
 // 当一个对象调用未实现的方法，会调用这个方法处理,并且会把对应的方法列表传过来.
 // 刚好可以用来判断，未实现的方法是不是我们想要动态添加的方法
+
 + (BOOL)resolveInstanceMethod:(SEL)sel
 {
     
@@ -144,6 +153,7 @@ void play(id self,SEL sel)
 }
 <h2>5.获取类的信息：</h2>
 <p>方法列表</p>
+
      u_int               mCount;
     Method*    methods= class_copyMethodList([Person class], &mCount);
     for (int i = 0; i < mCount ; i++)
@@ -153,6 +163,7 @@ void play(id self,SEL sel)
         NSLog(@"%@",strName);
     }
 <p>属性列表</p>
+
     u_int               pCount;
     objc_property_t*    properties= class_copyPropertyList([Person class], &pCount);
     for (int i = 0; i < pCount ; i++)
