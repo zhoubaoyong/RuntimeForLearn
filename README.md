@@ -162,8 +162,8 @@ void play(id self,SEL sel)
         NSLog(@"%@",strName);
     }
 <p>属性列表</p>
-
-    u_int               pCount;<br>
+```objc
+    u_int               pCount;
     objc_property_t*    properties= class_copyPropertyList([Person class], &pCount);
     for (int i = 0; i < pCount ; i++)
     {
@@ -171,19 +171,4 @@ void play(id self,SEL sel)
         NSString *strName = [NSString  stringWithCString:propertyName encoding:NSUTF8StringEncoding];
         NSLog(@"%@",strName);
     }
-     u_int               mCount;
-    Method*    methods= class_copyMethodList([Person class], &mCount);
-    for (int i = 0; i < mCount ; i++)
-    {
-        SEL name = method_getName(methods[i]);
-        NSString *strName = [NSString  stringWithCString:sel_getName(name) encoding:NSUTF8StringEncoding];
-        NSLog(@"%@",strName);
-    }
-```objc
-Base                        Custom
-MJRefresh.bundle            MJRefresh.h
-MJRefreshConst.h            MJRefreshConst.m
-UIScrollView+MJExtension.h  UIScrollView+MJExtension.m
-UIScrollView+MJRefresh.h    UIScrollView+MJRefresh.m
-UIView+MJExtension.h        UIView+MJExtension.m
 ```
