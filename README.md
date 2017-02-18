@@ -153,7 +153,7 @@ void play(id self,SEL sel)
 <h2>5.获取类的信息：</h2>
 <p>方法列表</p>
 
-     u_int               mCount;<br>
+    u_int               mCount;
     Method*    methods= class_copyMethodList([Person class], &mCount);
     for (int i = 0; i < mCount ; i++)
     {
